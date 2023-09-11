@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bakanlıklarModelStoreContainer" CdmEntityContainer="BakanlıklarEntities">
+    <EntitySetMapping Name="Bakanlık">
+      <EntityTypeMapping TypeName="bakanlıklarModel.Bakanlık">
+        <MappingFragment StoreEntitySet="Bakanlık">
+          <ScalarProperty Name="bakanlıkID" ColumnName="bakanlıkID" />
+          <ScalarProperty Name="bakanlıkAdi" ColumnName="bakanlıkAdi" />
+          <ScalarProperty Name="daireBaskanlik" ColumnName="daireBaskanlik" />
+          <ScalarProperty Name="Ciro" ColumnName="Ciro" />
+          <ScalarProperty Name="Merkez" ColumnName="Merkez" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="bakanlıklarModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vatandas">
+      <EntityTypeMapping TypeName="bakanlıklarModel.Vatanda">
+        <MappingFragment StoreEntitySet="Vatandas">
+          <ScalarProperty Name="vatandasID" ColumnName="vatandasID" />
+          <ScalarProperty Name="TCNo" ColumnName="TCNo" />
+          <ScalarProperty Name="Meslek" ColumnName="Meslek" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vergilers">
+      <EntityTypeMapping TypeName="bakanlıklarModel.Vergiler">
+        <MappingFragment StoreEntitySet="Vergiler">
+          <ScalarProperty Name="vergiID" ColumnName="vergiID" />
+          <ScalarProperty Name="vergiAdi" ColumnName="vergiAdi" />
+          <ScalarProperty Name="vergiTipi" ColumnName="vergiTipi" />
+          <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+          <ScalarProperty Name="faiz" ColumnName="faiz" />
+          <ScalarProperty Name="bakanlıkID" ColumnName="bakanlıkID" />
+          <ScalarProperty Name="vatandasID" ColumnName="vatandasID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="BakanlıkSearch" FunctionName="bakanlıklarModel.Store.BakanlıkSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bakanlıklarModel.BakanlıkSearch_Result">
+          <ScalarProperty Name="bakanlıkAdi" ColumnName="bakanlıkAdi" />
+          <ScalarProperty Name="daireBaskanlik" ColumnName="daireBaskanlik" />
+          <ScalarProperty Name="vergiAdi" ColumnName="vergiAdi" />
+          <ScalarProperty Name="vergiTipi" ColumnName="vergiTipi" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BakanlikAdd" FunctionName="bakanlıklarModel.Store.BakanlikAdd" />
+    <FunctionImportMapping FunctionImportName="BakanlikDel" FunctionName="bakanlıklarModel.Store.BakanlikDel" />
+    <FunctionImportMapping FunctionImportName="BakanlikList" FunctionName="bakanlıklarModel.Store.BakanlikList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bakanlıklarModel.BakanlikList_Result">
+          <ScalarProperty Name="bakanlıkID" ColumnName="bakanlıkID" />
+          <ScalarProperty Name="bakanlıkAdi" ColumnName="bakanlıkAdi" />
+          <ScalarProperty Name="daireBaskanlik" ColumnName="daireBaskanlik" />
+          <ScalarProperty Name="Ciro" ColumnName="Ciro" />
+          <ScalarProperty Name="Merkez" ColumnName="Merkez" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BakanlikUpdate" FunctionName="bakanlıklarModel.Store.BakanlikUpdate" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="bakanlıklarModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="bakanlıklarModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="bakanlıklarModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="bakanlıklarModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bakanlıklarModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="bakanlıklarModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bakanlıklarModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="bakanlıklarModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="bakanlıklarModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="VatandasAdd" FunctionName="bakanlıklarModel.Store.VatandasAdd" />
+    <FunctionImportMapping FunctionImportName="VatandasDel" FunctionName="bakanlıklarModel.Store.VatandasDel" />
+    <FunctionImportMapping FunctionImportName="VatandasList" FunctionName="bakanlıklarModel.Store.VatandasList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bakanlıklarModel.VatandasList_Result">
+          <ScalarProperty Name="vatandasID" ColumnName="vatandasID" />
+          <ScalarProperty Name="TCNo" ColumnName="TCNo" />
+          <ScalarProperty Name="Meslek" ColumnName="Meslek" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="VatandasSearch" FunctionName="bakanlıklarModel.Store.VatandasSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bakanlıklarModel.VatandasSearch_Result">
+          <ScalarProperty Name="TCNo" ColumnName="TCNo" />
+          <ScalarProperty Name="Meslek" ColumnName="Meslek" />
+          <ScalarProperty Name="vergiAdi" ColumnName="vergiAdi" />
+          <ScalarProperty Name="vergiTipi" ColumnName="vergiTipi" />
+          <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+          <ScalarProperty Name="faiz" ColumnName="faiz" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="VatandasUpdate" FunctionName="bakanlıklarModel.Store.VatandasUpdate" />
+    <FunctionImportMapping FunctionImportName="VergiAdd" FunctionName="bakanlıklarModel.Store.VergiAdd" />
+    <FunctionImportMapping FunctionImportName="VergiDel" FunctionName="bakanlıklarModel.Store.VergiDel" />
+    <FunctionImportMapping FunctionImportName="VergiList" FunctionName="bakanlıklarModel.Store.VergiList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bakanlıklarModel.VergiList_Result">
+          <ScalarProperty Name="vergiID" ColumnName="vergiID" />
+          <ScalarProperty Name="vergiAdi" ColumnName="vergiAdi" />
+          <ScalarProperty Name="vergiTipi" ColumnName="vergiTipi" />
+          <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+          <ScalarProperty Name="faiz" ColumnName="faiz" />
+          <ScalarProperty Name="bakanlıkID" ColumnName="bakanlıkID" />
+          <ScalarProperty Name="vatandasID" ColumnName="vatandasID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="VergiSearch" FunctionName="bakanlıklarModel.Store.VergiSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="bakanlıklarModel.VergiSearch_Result">
+          <ScalarProperty Name="TCNo" ColumnName="TCNo" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+          <ScalarProperty Name="vergiAdi" ColumnName="vergiAdi" />
+          <ScalarProperty Name="faiz" ColumnName="faiz" />
+          <ScalarProperty Name="bakanlıkAdi" ColumnName="bakanlıkAdi" />
+          <ScalarProperty Name="Ciro" ColumnName="Ciro" />
+          <ScalarProperty Name="Merkez" ColumnName="Merkez" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="VergiUpdate" FunctionName="bakanlıklarModel.Store.VergiUpdate" />
+  </EntityContainerMapping>
+</Mapping>

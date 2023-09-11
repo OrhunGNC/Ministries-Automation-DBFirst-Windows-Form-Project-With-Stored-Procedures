@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bakanlıklarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bakanlık">
+    <Key>
+      <PropertyRef Name="bakanlıkID" />
+    </Key>
+    <Property Name="bakanlıkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bakanlıkAdi" Type="varchar" MaxLength="50" />
+    <Property Name="daireBaskanlik" Type="varchar" MaxLength="50" />
+    <Property Name="Ciro" Type="money" />
+    <Property Name="Merkez" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Vatandas">
+    <Key>
+      <PropertyRef Name="vatandasID" />
+    </Key>
+    <Property Name="vatandasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TCNo" Type="varchar" MaxLength="11" />
+    <Property Name="Meslek" Type="varchar" MaxLength="50" />
+    <Property Name="Adres" Type="varchar" MaxLength="50" />
+    <Property Name="telefon" Type="varchar" MaxLength="11" />
+    <Property Name="mail" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Vergiler">
+    <Key>
+      <PropertyRef Name="vergiID" />
+    </Key>
+    <Property Name="vergiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="vergiAdi" Type="varchar" MaxLength="50" />
+    <Property Name="vergiTipi" Type="varchar" MaxLength="50" />
+    <Property Name="Tutar" Type="money" />
+    <Property Name="faiz" Type="varchar" MaxLength="50" />
+    <Property Name="bakanlıkID" Type="int" />
+    <Property Name="vatandasID" Type="int" />
+  </EntityType>
+  <Association Name="FK_Vergiler_Bakanlık">
+    <End Role="Bakanlık" Type="Self.Bakanlık" Multiplicity="0..1" />
+    <End Role="Vergiler" Type="Self.Vergiler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bakanlık">
+        <PropertyRef Name="bakanlıkID" />
+      </Principal>
+      <Dependent Role="Vergiler">
+        <PropertyRef Name="bakanlıkID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vergiler_Vatandas1">
+    <End Role="Vatandas" Type="Self.Vatandas" Multiplicity="0..1" />
+    <End Role="Vergiler" Type="Self.Vergiler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vatandas">
+        <PropertyRef Name="vatandasID" />
+      </Principal>
+      <Dependent Role="Vergiler">
+        <PropertyRef Name="vatandasID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="BakanlıkSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="BakanlikAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bakanlıkAdi" Type="varchar" Mode="In" />
+    <Parameter Name="daireBaskanlik" Type="varchar" Mode="In" />
+    <Parameter Name="Ciro" Type="money" Mode="In" />
+    <Parameter Name="Merkez" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="BakanlikDel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bakanlıkID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="BakanlikList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="BakanlikUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bakanlıkID" Type="int" Mode="In" />
+    <Parameter Name="bakanlıkAdi" Type="varchar" Mode="In" />
+    <Parameter Name="daireBaskanlik" Type="varchar" Mode="In" />
+    <Parameter Name="Ciro" Type="money" Mode="In" />
+    <Parameter Name="Merkez" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="VatandasAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TCNo" Type="varchar" Mode="In" />
+    <Parameter Name="Meslek" Type="varchar" Mode="In" />
+    <Parameter Name="Adres" Type="varchar" Mode="In" />
+    <Parameter Name="telefon" Type="varchar" Mode="In" />
+    <Parameter Name="mail" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="VatandasDel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vatandasID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="VatandasList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="VatandasSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="VatandasUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vatandasID" Type="int" Mode="In" />
+    <Parameter Name="TCNo" Type="varchar" Mode="In" />
+    <Parameter Name="Meslek" Type="varchar" Mode="In" />
+    <Parameter Name="Adres" Type="varchar" Mode="In" />
+    <Parameter Name="telefon" Type="varchar" Mode="In" />
+    <Parameter Name="mail" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="VergiAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vergiAdi" Type="varchar" Mode="In" />
+    <Parameter Name="vergiTipi" Type="varchar" Mode="In" />
+    <Parameter Name="Tutar" Type="money" Mode="In" />
+    <Parameter Name="faiz" Type="varchar" Mode="In" />
+    <Parameter Name="bakanlıkID" Type="int" Mode="In" />
+    <Parameter Name="vatandasID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="VergiDel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vergiID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="VergiList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="VergiSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="VergiUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vergiID" Type="int" Mode="In" />
+    <Parameter Name="vergiAdi" Type="varchar" Mode="In" />
+    <Parameter Name="vergiTipi" Type="varchar" Mode="In" />
+    <Parameter Name="Tutar" Type="money" Mode="In" />
+    <Parameter Name="faiz" Type="varchar" Mode="In" />
+    <Parameter Name="bakanlıkID" Type="int" Mode="In" />
+    <Parameter Name="vatandasID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="bakanlıklarModelStoreContainer">
+    <EntitySet Name="Bakanlık" EntityType="Self.Bakanlık" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vatandas" EntityType="Self.Vatandas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vergiler" EntityType="Self.Vergiler" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Vergiler_Bakanlık" Association="Self.FK_Vergiler_Bakanlık">
+      <End Role="Bakanlık" EntitySet="Bakanlık" />
+      <End Role="Vergiler" EntitySet="Vergiler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vergiler_Vatandas1" Association="Self.FK_Vergiler_Vatandas1">
+      <End Role="Vatandas" EntitySet="Vatandas" />
+      <End Role="Vergiler" EntitySet="Vergiler" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

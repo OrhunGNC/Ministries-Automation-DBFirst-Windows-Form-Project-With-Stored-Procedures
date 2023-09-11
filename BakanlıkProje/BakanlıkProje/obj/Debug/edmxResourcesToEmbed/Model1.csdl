@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bakanlıklarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bakanlık">
+    <Key>
+      <PropertyRef Name="bakanlıkID" />
+    </Key>
+    <Property Name="bakanlıkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bakanlıkAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="daireBaskanlik" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ciro" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Merkez" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Vergilers" Relationship="Self.FK_Vergiler_Bakanlık" FromRole="Bakanlık" ToRole="Vergiler" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Vatanda">
+    <Key>
+      <PropertyRef Name="vatandasID" />
+    </Key>
+    <Property Name="vatandasID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TCNo" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Meslek" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telefon" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Vergilers" Relationship="Self.FK_Vergiler_Vatandas1" FromRole="Vatandas" ToRole="Vergiler" />
+  </EntityType>
+  <EntityType Name="Vergiler">
+    <Key>
+      <PropertyRef Name="vergiID" />
+    </Key>
+    <Property Name="vergiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vergiAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="vergiTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tutar" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="faiz" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bakanlıkID" Type="Int32" />
+    <Property Name="vatandasID" Type="Int32" />
+    <NavigationProperty Name="Bakanlık" Relationship="Self.FK_Vergiler_Bakanlık" FromRole="Vergiler" ToRole="Bakanlık" />
+    <NavigationProperty Name="Vatanda" Relationship="Self.FK_Vergiler_Vatandas1" FromRole="Vergiler" ToRole="Vatandas" />
+  </EntityType>
+  <Association Name="FK_Vergiler_Bakanlık">
+    <End Role="Bakanlık" Type="Self.Bakanlık" Multiplicity="0..1" />
+    <End Role="Vergiler" Type="Self.Vergiler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bakanlık">
+        <PropertyRef Name="bakanlıkID" />
+      </Principal>
+      <Dependent Role="Vergiler">
+        <PropertyRef Name="bakanlıkID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vergiler_Vatandas1">
+    <End Role="Vatandas" Type="Self.Vatanda" Multiplicity="0..1" />
+    <End Role="Vergiler" Type="Self.Vergiler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vatandas">
+        <PropertyRef Name="vatandasID" />
+      </Principal>
+      <Dependent Role="Vergiler">
+        <PropertyRef Name="vatandasID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BakanlıklarEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bakanlık" EntityType="Self.Bakanlık" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Vatandas" EntityType="Self.Vatanda" />
+    <EntitySet Name="Vergilers" EntityType="Self.Vergiler" />
+    <AssociationSet Name="FK_Vergiler_Bakanlık" Association="Self.FK_Vergiler_Bakanlık">
+      <End Role="Bakanlık" EntitySet="Bakanlık" />
+      <End Role="Vergiler" EntitySet="Vergilers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vergiler_Vatandas1" Association="Self.FK_Vergiler_Vatandas1">
+      <End Role="Vatandas" EntitySet="Vatandas" />
+      <End Role="Vergiler" EntitySet="Vergilers" />
+    </AssociationSet>
+    <FunctionImport Name="BakanlıkSearch" ReturnType="Collection(bakanlıklarModel.BakanlıkSearch_Result)" />
+    <FunctionImport Name="BakanlikAdd">
+      <Parameter Name="bakanlıkAdi" Mode="In" Type="String" />
+      <Parameter Name="daireBaskanlik" Mode="In" Type="String" />
+      <Parameter Name="Ciro" Mode="In" Type="Decimal" />
+      <Parameter Name="Merkez" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="BakanlikDel">
+      <Parameter Name="bakanlıkID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="BakanlikList" ReturnType="Collection(bakanlıklarModel.BakanlikList_Result)" />
+    <FunctionImport Name="BakanlikUpdate">
+      <Parameter Name="bakanlıkID" Mode="In" Type="Int32" />
+      <Parameter Name="bakanlıkAdi" Mode="In" Type="String" />
+      <Parameter Name="daireBaskanlik" Mode="In" Type="String" />
+      <Parameter Name="Ciro" Mode="In" Type="Decimal" />
+      <Parameter Name="Merkez" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(bakanlıklarModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(bakanlıklarModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="VatandasAdd">
+      <Parameter Name="TCNo" Mode="In" Type="String" />
+      <Parameter Name="Meslek" Mode="In" Type="String" />
+      <Parameter Name="Adres" Mode="In" Type="String" />
+      <Parameter Name="telefon" Mode="In" Type="String" />
+      <Parameter Name="mail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="VatandasDel">
+      <Parameter Name="vatandasID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="VatandasList" ReturnType="Collection(bakanlıklarModel.VatandasList_Result)" />
+    <FunctionImport Name="VatandasSearch" ReturnType="Collection(bakanlıklarModel.VatandasSearch_Result)" />
+    <FunctionImport Name="VatandasUpdate">
+      <Parameter Name="vatandasID" Mode="In" Type="Int32" />
+      <Parameter Name="TCNo" Mode="In" Type="String" />
+      <Parameter Name="Meslek" Mode="In" Type="String" />
+      <Parameter Name="Adres" Mode="In" Type="String" />
+      <Parameter Name="telefon" Mode="In" Type="String" />
+      <Parameter Name="mail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="VergiAdd">
+      <Parameter Name="vergiAdi" Mode="In" Type="String" />
+      <Parameter Name="vergiTipi" Mode="In" Type="String" />
+      <Parameter Name="Tutar" Mode="In" Type="Decimal" />
+      <Parameter Name="faiz" Mode="In" Type="String" />
+      <Parameter Name="bakanlıkID" Mode="In" Type="Int32" />
+      <Parameter Name="vatandasID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="VergiDel">
+      <Parameter Name="vergiID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="VergiList" ReturnType="Collection(bakanlıklarModel.VergiList_Result)" />
+    <FunctionImport Name="VergiSearch" ReturnType="Collection(bakanlıklarModel.VergiSearch_Result)" />
+    <FunctionImport Name="VergiUpdate">
+      <Parameter Name="vergiID" Mode="In" Type="Int32" />
+      <Parameter Name="vergiAdi" Mode="In" Type="String" />
+      <Parameter Name="vergiTipi" Mode="In" Type="String" />
+      <Parameter Name="Tutar" Mode="In" Type="Decimal" />
+      <Parameter Name="faiz" Mode="In" Type="String" />
+      <Parameter Name="bakanlıkID" Mode="In" Type="Int32" />
+      <Parameter Name="vatandasID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="BakanlıkSearch_Result">
+    <Property Type="String" Name="bakanlıkAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="daireBaskanlik" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="vergiAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="vergiTipi" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="BakanlikList_Result">
+    <Property Type="Int32" Name="bakanlıkID" Nullable="false" />
+    <Property Type="String" Name="bakanlıkAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="daireBaskanlik" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Ciro" Nullable="true" Precision="19" />
+    <Property Type="String" Name="Merkez" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="VatandasList_Result">
+    <Property Type="Int32" Name="vatandasID" Nullable="false" />
+    <Property Type="String" Name="TCNo" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Meslek" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Adres" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="telefon" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="mail" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="VatandasSearch_Result">
+    <Property Type="String" Name="TCNo" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Meslek" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="vergiAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="vergiTipi" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Tutar" Nullable="true" Precision="19" />
+    <Property Type="String" Name="faiz" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="VergiList_Result">
+    <Property Type="Int32" Name="vergiID" Nullable="false" />
+    <Property Type="String" Name="vergiAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="vergiTipi" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Tutar" Nullable="true" Precision="19" />
+    <Property Type="String" Name="faiz" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="bakanlıkID" Nullable="true" />
+    <Property Type="Int32" Name="vatandasID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="VergiSearch_Result">
+    <Property Type="String" Name="TCNo" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="telefon" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="mail" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Tutar" Nullable="true" Precision="19" />
+    <Property Type="String" Name="vergiAdi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="faiz" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="bakanlıkAdi" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Ciro" Nullable="true" Precision="19" />
+    <Property Type="String" Name="Merkez" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

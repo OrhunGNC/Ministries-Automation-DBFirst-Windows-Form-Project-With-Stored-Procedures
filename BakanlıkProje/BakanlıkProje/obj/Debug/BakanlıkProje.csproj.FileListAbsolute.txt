@@ -1,0 +1,34 @@
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\bin\Debug\BakanlıkProje.exe.config
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\bin\Debug\BakanlıkProje.exe
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\bin\Debug\BakanlıkProje.pdb
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\bin\Debug\EntityFramework.dll
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\bin\Debug\EntityFramework.xml
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.csproj.AssemblyReference.cache
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.csproj.SuggestedBindingRedirects.cache
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.Form1.resources
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.Properties.Resources.resources
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.csproj.GenerateResource.cache
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.csproj.CoreCompileInputs.cache
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.csproj.CopyComplete
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.exe
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.pdb
+C:\Users\BRIGHT\Desktop\konsol örnekleri\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.RaporSayfası.resources
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\bin\Debug\BakanlıkProje.exe.config
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\bin\Debug\BakanlıkProje.exe
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\bin\Debug\BakanlıkProje.pdb
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\bin\Debug\EntityFramework.dll
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\bin\Debug\EntityFramework.xml
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.csproj.AssemblyReference.cache
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.csproj.SuggestedBindingRedirects.cache
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.Form1.resources
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.Properties.Resources.resources
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.RaporSayfası.resources
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.csproj.GenerateResource.cache
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.csproj.CopyComplete
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.exe
+C:\Users\pc\Desktop\BakanlıkProje\BakanlıkProje\obj\Debug\BakanlıkProje.pdb
